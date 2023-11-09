@@ -1,10 +1,10 @@
 extends layout
 block content
   h1= title
-  - var results =[{animalName:"DOG", animalAge:"5", animalCost:200000},{animalName:"CAT", animalAge:"7", animalCost:50000},{animalName:"PIG", animalAge:"8", animalCost:70000}]
+  - var items = results;
   div(class="container-fluid")
    div(class="row")
-    each v,index  in results 
+    each v,index  in items 
      div(class="col-sm-2" onclick =`buy(${index})`) #{v.animalName}, #{v.animalAge}, #{v.animalCost}
       script. 
         function buy(a){
