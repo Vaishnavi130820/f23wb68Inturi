@@ -3,11 +3,27 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config();
+
+const connectionString = 
+process.env.MONGO_CON 
+mongoose = require('mongoose'); 
+mongoose.connect(connectionString);
+
 var animalsRouter = require('./routes/animals');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var resourceRouter = require('./routes/resource');
+
+//Get the default connection 
+var db = mongoose.connection; 
+ //Bind connection to error event  
+db.on('error', console.error.bind(console, 'MongoDB connection error:')); 
+db.once("open", function(){ 
+console.log("Connection to DB succeeded")}); 
+var animals = require("./models/animals");
 
 var app = express();
 
@@ -25,7 +41,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/animals', animalsRouter);
 app.use('/board', boardRouter);
-app.use('/choose', chooseRouter);
+app.use('/resource', resourceRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -43,3 +59,33 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+// We can seed the collection if needed on server start 
+async function recreateDB(){   
+  // Delete everything   
+await animals.deleteMany(); 
+ 
+let instance1 = new 
+animals({animalName:"DOG", animalAge:"5", animalCost:200000});   
+ instance1.save().then(doc=>{     
+  console.log("First object1 saved")} 
+  ).catch(err=>{  
+  console.error(err) 
+  }); 
+  let instance2 = new 
+  animals({animalName:"CAT", animalAge:"7", animalCost:50000});   
+   instance2.save().then(doc=>{     
+    console.log("First object2 saved")} 
+    ).catch(err=>{  
+    console.error(err) 
+    }); 
+    let instance3 = new 
+animals({animalName:"PIG", animalAge:"8", animalCost:70000});   
+ instance3.save().then(doc=>{     
+  console.log("First object3 saved")} 
+  ).catch(err=>{  
+  console.error(err) 
+  }); 
+}  
+let reseed = true; 
+if (reseed) {recreateDB();} 
+
