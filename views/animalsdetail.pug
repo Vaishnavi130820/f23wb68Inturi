@@ -1,14 +1,18 @@
 extends layout
 block content
   h1= title
-  - let animalsid = toShow._id
-  - let animalName = toShow.animalName
-  - let animalAge = toShow.animalAge
-  - let animalCost = toShow.animalCost
-  div
-    div.row
-      div(class='animalsAttr mr-3') animals ID is:
-        div #{animalsid}
+  h1= title
+  if (toShow == null)
+    h2 No instance to detail
+  else
+    - let animalsid = toShow._id
+    - let animalName = toShow.animalName
+    - let animalAge = toShow.animalAge
+    - let animalCost = toShow.animalCost
+    div
+      div.row
+        div(class='animalsAttr mr-3') animals ID is:
+          div #{animalsid}
       div.row
         div(class='animalsAttr mr-3') animals Name is:
           div #{animalName}

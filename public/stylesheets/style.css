@@ -1,5 +1,6 @@
 body {
   padding: 50px;
+  background-color: aqua;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -11,4 +12,27 @@ a {
   background-color: aquamarine;
   width: 120px;
   }
+
+  .form-control {
+    background-color: rgb(207, 238, 31);
+    font: 14px "Brush Script MT", Helvetica, Arial, Sans-serif;
+    width: 420px;
+    }
+  
+    .form-group {
+      font: 30px "Brush Script MT", Helvetica, Arial, Sans-serif;
+      width: 420px;
+      }
+    
+      .btn-primary{
+
+        background-color: rgb(102, 43, 229);
+        border-radius: 50%;
+        color: white;
+        padding: 18px 38px;
+        text-align: center;
+        text-decoration: sandybrown;
+        display: inline-block;
+        font-size: 18px;
+      }
   

@@ -3,14 +3,14 @@ block content
   h1= title
   form(id='animalsForm', action="/resource/animals", method="POST")
     div.form-group
-      label.animalsAttr(for='animalsName') animals Name
-      input#animalsName(type='text', name='animalsName')
+      label.animalsAttr(for='animalName') animals Name
+      input#animalName(type='text', name='animalName')
     div.form-group
-      label.animalsAttr(for='animalsAge') animals Age
-      input#animalsAge(type='text', name='animalsAge')
+      label.animalsAttr(for='animalAge') animals Age
+      input#animalAge(type='text', name='animalAge')
     div.form-group
-      label.animalsAttr(for='animalsCost') animals Cost
-      input#animalsCost(type='number', name='animalsCost')
+      label.animalsAttr(for='animalCost') animals Cost
+      input#animalCost(type='number', name='animalCost')
     input(type="submit")
   script.
     document.forms['animalsForm'].addEventListener('submit', (event) => {
