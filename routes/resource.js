@@ -10,7 +10,18 @@ router.get('/', api_controller.api);
 // POST request for creating a animals.
 router.post('/animals', animals_controller.animals_create_post);
 // DELETE request to delete animals.
-router.delete('/animals/:id', animals_controller.animals_delete);
+//Handle Costume delete on DELETE.
+exports.animals_delete = async function(req, res) {
+console.log("delete " + req.params.id)
+try {
+result = await animals.findByIdAndDelete( req.params.id)
+console.log("Removed " + result)
+res.send(result)
+} catch (err) {
+res.status(500)
+res.send(`{"error": Error deleting ${err}}`);
+}
+};
 // PUT request to update animals.
 router.put('/animals/:id', animals_controller.animals_update_put);
 // GET request for one animals.
