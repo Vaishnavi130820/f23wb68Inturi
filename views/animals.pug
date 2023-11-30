@@ -1,17 +1,30 @@
+//- Assuming you have a similar structure for your delete route
+//- Adjust the route and parameters as needed
+
 extends layout
 
 block content
   h1= title
-  - var items = results;
-  div(class="container-fluid")
-    div(class="row m-1")
-      each v, index in items 
-        - let destination = `dispatch("/animals/update?id=${v._id}")`
-        div(class="col-sm-2 m-1") 
-          | #{v.animalName}, #{v.animalAge}, #{v.animalCost}
-          button.btn(class="btn-primary",onclick=destination) Update
+
+  a.btn.btn-primary(href="/animals/create") Create animals
+
+  - let items = results;
+  each item in items
+    - let updateDestination = `dispatch("/animals/update?id=${item._id}")`
+    - let detailDestination = `dispatch("/animals/detail?id=${item._id}")`
+    - let deleteDestination = `dispatch("/animals/delete?id=${item._id}")`
+
+    div
+      p animals_name - #{item.animals_name}
+      p animals_model - #{item.animals_model}
+      p animals_price - #{item.animals_price}
+      button.btn.btn-primary.ml-1(onclick=updateDestination) Update
+      button.btn.btn-secondary.ml-1(onclick=detailDestination) Detail
+      button.btn.btn-danger.ml-1(onclick=deleteDestination) Delete
+      br
+      br
 
   script.
-    function dispatch(path) {
+    function dispatch(path){
       window.location.href = path;
     }

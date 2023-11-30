@@ -27,5 +27,8 @@ router.put('/animals/:id', animals_controller.animals_update_put);
 // GET request for one animals.
 router.get('/animals/:id', animals_controller.animals_detail);
 // GET request for list of all animals items.
-router.get('/animals', animals_controller.animals_list);
+router.get('/animals/:id', animals_controller.animals_list);
+
+router.get('/animals/:id', animals_controller.animals_delete);
+
 module.exports = router;
