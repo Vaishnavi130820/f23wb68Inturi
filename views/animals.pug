@@ -9,7 +9,7 @@ block content
         - let destination = `dispatch("/animals/update?id=${v._id}")`
         div(class="col-sm-2 m-1") 
           | #{v.animalName}, #{v.animalAge}, #{v.animalCost}
-          button.btn(class="btn-primary.ml-1",onclick=destination) Update
+          button.btn(class="btn-primary",onclick=destination) Update
 
   script.
     function dispatch(path) {
